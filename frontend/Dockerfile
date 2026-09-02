@@ -2,8 +2,8 @@ FROM nginx:alpine
 
 RUN rm -rf /usr/share/nginx/html/*
 
-# main folder ke andar ka saara content seedhe web root me copy karein
-COPY main/ /usr/share/nginx/html/
+# Poora frontend folder (jisme main folder bhi hai) web root me copy karein
+COPY . /usr/share/nginx/html/
 
 # Config file replace karein
 COPY main/google-store.conf /etc/nginx/conf.d/default.conf
