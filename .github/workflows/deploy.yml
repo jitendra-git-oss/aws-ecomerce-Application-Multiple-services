@@ -43,3 +43,8 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./frontend
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      # 3. Deploy to ECS (Automatic Restart with new image)
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service --cluster ecommerce-cluster --service ecommerce-task-service-72lsojn8 --force-new-deployment
